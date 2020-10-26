@@ -10,4 +10,9 @@ public class MaterialPointPosition : MonoBehaviour
     {
         mr.material.SetVector("_Point", transform.position);
     }
+
+    private void Start()
+    {
+        Debug.Log("2");
+    }
 }
