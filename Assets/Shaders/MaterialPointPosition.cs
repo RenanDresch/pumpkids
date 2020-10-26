@@ -14,5 +14,6 @@ public class MaterialPointPosition : MonoBehaviour
     private void Start()
     {
         Debug.Log("1");
+        Debug.Log("2");
     }
 }
