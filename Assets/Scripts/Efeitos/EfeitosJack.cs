@@ -19,7 +19,7 @@ public class EfeitosJack : MonoBehaviour
         }
     }
 
-    private void Possuir()
+    public void Possuir()
     {
         transform.position = Vector3.Lerp(transform.position, dragShot.alvo.position, velocidadeEfeito * Time.deltaTime);
         transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, velocidadeEfeito * Time.deltaTime);
@@ -33,5 +33,6 @@ public class EfeitosJack : MonoBehaviour
     public void MoverPara(Vector3 posicao)
     {
         transform.position = Vector3.Lerp(transform.position, posicao, velocidadeEfeito * Time.deltaTime);
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, velocidadeEfeito * Time.deltaTime);
     }
 }

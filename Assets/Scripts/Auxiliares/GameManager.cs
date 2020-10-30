@@ -57,6 +57,11 @@ public class GameManager : MonoBehaviour
         if (Vector3.Distance(dragShot.jack.position, posicaoAlvo) < 0.01f)
         {
             dragShot.podeAtirar = true;
+            if(checkPoint)
+            {
+                dragShot.alvo = checkPoint;
+                efeitos.Possuir();
+            }
         }
     }
 
