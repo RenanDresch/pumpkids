@@ -33,6 +33,6 @@ public class EfeitosJack : MonoBehaviour
     public void MoverPara(Vector3 posicao)
     {
         transform.position = Vector3.Lerp(transform.position, posicao, velocidadeEfeito * Time.deltaTime);
-        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, velocidadeEfeito * Time.deltaTime);
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, velocidadeEfeito * 5 * Time.deltaTime);
     }
 }

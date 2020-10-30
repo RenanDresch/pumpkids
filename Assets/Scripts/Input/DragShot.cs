@@ -16,7 +16,7 @@ public class DragShot : MonoBehaviour
 
     private void Start()
     {
-        jack.sleepThreshold = 50;
+        jack.sleepThreshold = 10;
     }
 
     private void Update()
@@ -44,7 +44,7 @@ public class DragShot : MonoBehaviour
 
     private void Disparar()
     {
-        var direcao = (posicaoInicial - posicaoFinal) * 0.1f;
+        var direcao = (posicaoInicial - posicaoFinal) * 0.05f;
 
         var velocidade = new Vector3(direcao.x, 0, direcao.y);
 
