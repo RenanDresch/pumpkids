@@ -15,7 +15,9 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        var posicaoAlvo = new Vector3(0, jack.position.y, jack.position.z);
+
         Vector3 vel = default;
-        transform.position = Vector3.SmoothDamp(transform.position, jack.position - offset, ref vel, velocidade * Time.fixedDeltaTime);
+        transform.position = Vector3.SmoothDamp(transform.position, posicaoAlvo - offset, ref vel, velocidade * Time.fixedDeltaTime);
     }
 }
