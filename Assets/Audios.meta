@@ -1,6 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/Audios.meta
 guid: ba1e549f7a6a6b445932091492b073d8
 folderAsset: yes
+=======
+guid: 62552f14ac8bf6043b7065fcbaa0db08
+>>>>>>> 096a4784d208e8ddc2a16e94cc91c57b0a39f2ab:Assets/Install Bolt/Bolt_1_4_13_NET3.unitypackage.meta
+=======
+guid: ba1e549f7a6a6b445932091492b073d8
+folderAsset: yes
+>>>>>>> 096a4784d208e8ddc2a16e94cc91c57b0a39f2ab
 DefaultImporter:
   externalObjects: {}
   userData: 
