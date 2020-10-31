@@ -50,7 +50,17 @@ public class DragShot : MonoBehaviour
 
         jack.AddForce(velocidade, ForceMode.Impulse);
 
-        alvo = null;
+        if (alvo)
+        {
+
+            var auraAlvo = alvo.GetComponent<AuraAlvo>();
+            if (auraAlvo)
+            {
+                auraAlvo.possuido = false;
+            }
+
+            alvo = null;
+        }
     }
 
 
@@ -64,10 +74,21 @@ public class DragShot : MonoBehaviour
                 jack.velocity = Vector3.zero;
                 jack.Sleep();
                 alvo = colisorAlvo.transform;
+
+                var auraAlvo = colisorAlvo.GetComponent<AuraAlvo>();
+                if (auraAlvo)
+                {
+                    auraAlvo.possuido = true;
+                }
             }
             else
             {
-                Debug.Log("Parede");
+                var colisorParede = other.GetComponent<ColisorParede>();
+                if(colisorParede)
+                {
+                    jack.velocity = Vector3.zero;
+                    jack.Sleep();
+                }
             }
         }
     }

@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
         }
         else if (!dragShot.podeAtirar)
         {
-            Debug.Log("Voltando");
             VoltarAoCheckPoint();
         }
     }
@@ -59,6 +58,11 @@ public class GameManager : MonoBehaviour
             dragShot.podeAtirar = true;
             if(checkPoint)
             {
+                var auraAlvo = checkPoint.GetComponent<AuraAlvo>();
+                if(auraAlvo)
+                {
+                    auraAlvo.possuido = true;
+                }
                 dragShot.alvo = checkPoint;
                 efeitos.Possuir();
             }
@@ -67,6 +71,7 @@ public class GameManager : MonoBehaviour
 
     private void Errou()
     {
+        dragShot.tempoDoTiro = 0;
         dragShot.atirou = false;
 
         dragShot.jack.velocity = Vector3.zero;

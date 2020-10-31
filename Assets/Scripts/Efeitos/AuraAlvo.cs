@@ -2,7 +2,7 @@
 
 public class AuraAlvo : MonoBehaviour
 {
-    private SkinnedMeshRenderer[] renderers;
+    private Renderer[] renderers;
 
     public bool possuido;
     public float velocidadeEfeito = 3;
@@ -11,7 +11,7 @@ public class AuraAlvo : MonoBehaviour
 
     private void Start()
     {
-        renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        renderers = GetComponentsInChildren<Renderer>();
     }
 
     private void Update()

@@ -5,15 +5,26 @@ using UnityEngine;
 public class EfeitosJack : MonoBehaviour
 {
     public DragShot dragShot;
+    public TrailRenderer trail;
     public float velocidadeEfeito;
+
+    private Renderer[] renderers;
+    private float escalaAlvo;
+
+    private void Start()
+    {
+        renderers = GetComponentsInChildren<Renderer>();
+    }
 
     private void Update()
     {
+        MudarAura();
         if (dragShot.alvo)
         {
             Possuir();
         }
-        else
+        else if(dragShot.atirou 
+            || dragShot.podeAtirar)
         {
             VoltarAoNormal();
         }
@@ -27,12 +38,25 @@ public class EfeitosJack : MonoBehaviour
 
     private void VoltarAoNormal()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, velocidadeEfeito * Time.deltaTime);
+        trail.enabled = true;
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * escalaAlvo, velocidadeEfeito * Time.deltaTime);
     }
 
     public void MoverPara(Vector3 posicao)
     {
+        trail.enabled = false;
+        trail.Clear();
         transform.position = Vector3.Lerp(transform.position, posicao, velocidadeEfeito * Time.deltaTime);
-        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, velocidadeEfeito * 5 * Time.deltaTime);
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, velocidadeEfeito * Time.deltaTime);
+    }
+
+    public void MudarAura()
+    {
+        foreach(var r in renderers)
+        {
+            r.material.SetFloat("_Fresnel", 3 - dragShot.tempoDoTiro);
+        }
+        escalaAlvo = (5 - dragShot.tempoDoTiro) / 5;
+        trail.startWidth = .2f * ((5 - dragShot.tempoDoTiro) / 5);
     }
 }
