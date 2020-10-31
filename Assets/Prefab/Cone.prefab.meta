@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefab/Cone.prefab.meta
 guid: 758ca32b4b5cdab47a5f994acaf1873b
 PrefabImporter:
+=======
+guid: 62552f14ac8bf6043b7065fcbaa0db08
+DefaultImporter:
+>>>>>>> 7b21fd68e464646be674dece9471b734cbf25a1b:Assets/Install Bolt/Bolt_1_4_13_NET3.unitypackage.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
