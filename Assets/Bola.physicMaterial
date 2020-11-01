@@ -9,6 +9,6 @@ PhysicMaterial:
   m_Name: Bola
   dynamicFriction: 1
   staticFriction: 1
-  bounciness: 1
+  bounciness: 0.8
   frictionCombine: 3
   bounceCombine: 3
