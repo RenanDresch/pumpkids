@@ -73,6 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 664643957332740324}
   - component: {fileID: 1936597093}
+  - component: {fileID: 8223614930817496114}
   m_Layer: 9
   m_Name: Crianca
   m_TagString: Untagged
@@ -112,6 +113,40 @@ MonoBehaviour:
   velocidade: 0.2
   espera: 8
   animador: {fileID: 7517873167613339498}
+--- !u!114 &8223614930817496114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176373231314129502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db652dcdc47dc3740b54fe04b80de741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cabelos:
+  - {fileID: 4809122911504238558}
+  - {fileID: 824106440261641109}
+  mascaras:
+  - {fileID: 3208184315283085640}
+  - {fileID: 7720328487464774329}
+  - {fileID: 1081615159314201749}
+  materiaisCabelo:
+  - {fileID: 2100000, guid: 727964f8ddde76d4ca0dfc6b7d71646c, type: 2}
+  - {fileID: 2100000, guid: 0d431c68f887a7043876466a28b4d3ab, type: 2}
+  materiaisCorpo:
+  - {fileID: 2100000, guid: 79545dd6fdcdc554080682a0b7643d11, type: 2}
+  - {fileID: 2100000, guid: 527777e5c3f330248bafd5a551a1fc15, type: 2}
+  - {fileID: 2100000, guid: bcd310e415044174e87eca36e12dbca6, type: 2}
+  - {fileID: 2100000, guid: c6e150ab5b108b64ab52053641c19fde, type: 2}
+  renderCabelos:
+  - {fileID: 3785058481902537592}
+  - {fileID: 3572023495100131430}
+  renderCorpos:
+  - {fileID: 2388003976038522153}
+  - {fileID: 6358852131572773794}
+  - {fileID: 4421856517272828719}
 --- !u!1 &824106440261641109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,7 +1472,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0d431c68f887a7043876466a28b4d3ab, type: 2}
+  - {fileID: 2100000, guid: 727964f8ddde76d4ca0dfc6b7d71646c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
