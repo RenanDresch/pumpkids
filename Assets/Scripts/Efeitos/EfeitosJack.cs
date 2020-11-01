@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EfeitosJack : MonoBehaviour
 {
+    public Transform jack;
     public DragShot dragShot;
     public TrailRenderer trail;
     public float velocidadeEfeito;
@@ -33,13 +34,13 @@ public class EfeitosJack : MonoBehaviour
     public void Possuir()
     {
         transform.position = Vector3.Lerp(transform.position, dragShot.alvo.position, velocidadeEfeito * Time.deltaTime);
-        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, velocidadeEfeito * Time.deltaTime);
+        jack.localScale = Vector3.Lerp(jack.localScale, Vector3.zero, velocidadeEfeito * Time.deltaTime);
     }
 
     private void VoltarAoNormal()
     {
         trail.enabled = true;
-        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * escalaAlvo, velocidadeEfeito * Time.deltaTime);
+        jack.localScale = Vector3.Lerp(jack.localScale, Vector3.one * escalaAlvo, velocidadeEfeito * Time.deltaTime);
     }
 
     public void MoverPara(Vector3 posicao)
@@ -47,7 +48,7 @@ public class EfeitosJack : MonoBehaviour
         trail.enabled = false;
         trail.Clear();
         transform.position = Vector3.Lerp(transform.position, posicao, velocidadeEfeito * Time.deltaTime);
-        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, velocidadeEfeito * Time.deltaTime);
+        jack.localScale = Vector3.Lerp(jack.localScale, Vector3.zero, velocidadeEfeito * Time.deltaTime);
     }
 
     public void MudarAura()

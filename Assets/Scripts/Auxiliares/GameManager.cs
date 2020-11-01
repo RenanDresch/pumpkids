@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         }
         else if (!dragShot.podeAtirar)
         {
+            dragShot.colisor.enabled = false;
             VoltarAoCheckPoint();
         }
     }
@@ -56,7 +57,8 @@ public class GameManager : MonoBehaviour
         if (Vector3.Distance(dragShot.jack.position, posicaoAlvo) < 0.01f)
         {
             dragShot.podeAtirar = true;
-            if(checkPoint)
+            dragShot.colisor.enabled = true;
+            if (checkPoint)
             {
                 var auraAlvo = checkPoint.GetComponent<AuraAlvo>();
                 if(auraAlvo)

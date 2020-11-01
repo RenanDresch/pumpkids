@@ -7,11 +7,15 @@ public class DragShot : MonoBehaviour
 
     public Transform alvo;
 
+    public Collider colisor;
+
     public Vector2 posicaoInicial;
     public Vector2 posicaoFinal;
+    public Vector2 direcao;
 
     public bool podeAtirar = true;
     public bool atirou = false;
+    public bool mirando = false;
 
     public float tempoMaximoDoTiro;
     public float tempoDoTiro;
@@ -30,14 +34,21 @@ public class DragShot : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 posicaoInicial = Input.mousePosition;
+                mirando = true;
             }
-            if (Input.GetMouseButtonUp(0))
+            else if (mirando && Input.GetMouseButtonUp(0))
             {
+                mirando = false;
                 tempoDoTiro = 0;
                 posicaoFinal = Input.mousePosition;
                 Disparar();
                 podeAtirar = false;
                 atirou = true;
+            }
+            if(mirando)
+            {
+                posicaoFinal = Input.mousePosition;
+                direcao = posicaoInicial - posicaoFinal;
             }
         }
         else
