@@ -61,7 +61,7 @@ public class DragShot : MonoBehaviour
     {
         var direcao = (posicaoInicial - posicaoFinal) * 0.05f;
 
-        var velocidade = new Vector3(direcao.x, 0, direcao.y) * 4;
+        var velocidade = new Vector3(direcao.x, 0, direcao.y) * 2;
 
         jack.AddForce(velocidade, ForceMode.Impulse);
 

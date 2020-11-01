@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
 
         if (Vector3.Distance(dragShot.jack.position, posicaoAlvo) < 0.01f)
         {
+            dragShot.transform.position = posicaoAlvo;
             dragShot.podeAtirar = true;
             dragShot.colisor.enabled = true;
             if (checkPoint)
