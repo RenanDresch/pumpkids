@@ -416,6 +416,7 @@ MonoBehaviour:
   jack: {fileID: 6628034588390061011}
   alvo: {fileID: 0}
   colisor: {fileID: 6628034588390061012}
+  velocidadeTiro: 1
   posicaoInicial: {x: 0, y: 0}
   posicaoFinal: {x: 0, y: 0}
   direcao: {x: 0, y: 0}
