@@ -12,6 +12,7 @@ public class DragShot : MonoBehaviour
     public bool podeAtirar = true;
     public bool atirou = false;
 
+    public float tempoMaximoDoTiro;
     public float tempoDoTiro;
 
     private void Start()

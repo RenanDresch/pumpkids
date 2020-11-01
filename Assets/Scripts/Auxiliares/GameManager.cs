@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     {
         if(dragShot.atirou)
         {
-            if(dragShot.tempoDoTiro >= 5)
+            if(dragShot.tempoDoTiro >= dragShot.tempoMaximoDoTiro)
             {
                 Errou();
             }
