@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261712258400535450}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.565, y: 2.712, z: 1.064}
+  m_LocalPosition: {x: -0.565, y: 2.712, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6628034588007071897}
@@ -416,6 +416,7 @@ MonoBehaviour:
   jack: {fileID: 6628034588390061011}
   alvo: {fileID: 0}
   colisor: {fileID: 6628034588390061012}
+  velocidadeTiro: 1
   posicaoInicial: {x: 0, y: 0}
   posicaoFinal: {x: 0, y: 0}
   direcao: {x: 0, y: 0}

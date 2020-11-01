@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class DragShot : MonoBehaviour
@@ -8,6 +9,8 @@ public class DragShot : MonoBehaviour
     public Transform alvo;
 
     public Collider colisor;
+
+    public float velocidadeTiro = 2;
 
     public Vector2 posicaoInicial;
     public Vector2 posicaoFinal;
@@ -33,22 +36,27 @@ public class DragShot : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                posicaoInicial = Input.mousePosition;
+                posicaoInicial = Vector3.zero;
+                posicaoFinal = posicaoInicial;
                 mirando = true;
+                Cursor.visible = false;
             }
             else if (mirando && Input.GetMouseButtonUp(0))
             {
                 mirando = false;
                 tempoDoTiro = 0;
-                posicaoFinal = Input.mousePosition;
+                posicaoFinal += new Vector2(Input.GetAxis("Mouse X") * 100, Input.GetAxis("Mouse Y") * 100);
+                posicaoFinal = Vector3.ClampMagnitude(posicaoFinal, 1500);
                 Disparar();
                 podeAtirar = false;
                 atirou = true;
+                Cursor.visible = true;
             }
             if(mirando)
             {
-                posicaoFinal = Input.mousePosition;
+                posicaoFinal += new Vector2(Input.GetAxis("Mouse X") * 100, Input.GetAxis("Mouse Y") * 100);
                 direcao = posicaoInicial - posicaoFinal;
+                posicaoFinal = Vector3.ClampMagnitude(posicaoFinal, 1500);
             }
         }
         else
@@ -61,7 +69,7 @@ public class DragShot : MonoBehaviour
     {
         var direcao = (posicaoInicial - posicaoFinal) * 0.05f;
 
-        var velocidade = new Vector3(direcao.x, 0, direcao.y) * 2;
+        var velocidade = new Vector3(direcao.x, 0, direcao.y) * velocidadeTiro;
 
         jack.AddForce(velocidade, ForceMode.Impulse);
 
