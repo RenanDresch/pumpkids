@@ -3,12 +3,30 @@
 public class AuraAlvo : MonoBehaviour
 {
     public Transform raiz;
+    public AudioSource fonteSonora;
+
     private Renderer[] renderers;
 
-    public bool possuido;
+    private bool possuido;
     private float velocidadeEfeito = 4.5f;
 
     private float fresnel = 0;
+
+    public bool Possuido
+    {
+        get
+        {
+            return possuido;
+        }
+        set
+        {
+            if(value)
+            {
+                TocarSom();
+            }
+            possuido = value;
+        }
+    }
 
     private void Start()
     {
@@ -36,5 +54,11 @@ public class AuraAlvo : MonoBehaviour
         {
             r.material.SetFloat("_Fresnel", fresnel);
         }
+    }
+
+    private void TocarSom()
+    {
+        fonteSonora.pitch = Random.Range(1f, 2f);
+        fonteSonora.PlayOneShot(fonteSonora.clip);
     }
 }

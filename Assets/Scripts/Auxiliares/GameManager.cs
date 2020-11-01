@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
                 var auraAlvo = checkPoint.GetComponent<AuraAlvo>();
                 if(auraAlvo)
                 {
-                    auraAlvo.possuido = true;
+                    auraAlvo.Possuido = true;
                 }
                 dragShot.alvo = checkPoint;
                 efeitos.Possuir();

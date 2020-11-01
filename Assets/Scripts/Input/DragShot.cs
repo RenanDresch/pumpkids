@@ -91,7 +91,7 @@ public class DragShot : MonoBehaviour
             var auraAlvo = alvo.GetComponent<AuraAlvo>();
             if (auraAlvo)
             {
-                auraAlvo.possuido = false;
+                auraAlvo.Possuido = false;
             }
 
             alvo = null;
@@ -113,7 +113,7 @@ public class DragShot : MonoBehaviour
                 var auraAlvo = colisorAlvo.GetComponent<AuraAlvo>();
                 if (auraAlvo)
                 {
-                    auraAlvo.possuido = true;
+                    auraAlvo.Possuido = true;
                 }
                 sementesTemporarias.Clear();
             }
