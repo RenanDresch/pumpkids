@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DragShot : MonoBehaviour
 {
+    public GameManager gm;
+
     public Rigidbody jack;
 
     public Transform alvo;
@@ -127,6 +129,7 @@ public class DragShot : MonoBehaviour
             var colisorSemente = other.GetComponent<ColisorSemente>();
             if (colisorSemente)
             {
+                gm.sementesColetadas++;
                 sementesTemporarias.Add(colisorSemente);
                 colisorSemente.coletada = true;
             }

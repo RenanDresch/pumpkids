@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     public EfeitosJack efeitos;
     public Transform checkPoint;
 
+    public int sementesColetadas = 0;
+
     private Vector3 posicaoInicial;
 
     private void Start()
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour
 
         efeitos.MoverPara(posicaoAlvo);
 
-        if (Vector3.Distance(dragShot.jack.position, posicaoAlvo) < 0.05f)
+        if (Vector3.Distance(dragShot.jack.position, posicaoAlvo) < 0.1f)
         {
             dragShot.transform.position = posicaoAlvo;
             dragShot.podeAtirar = true;
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour
         foreach(var semente in dragShot.sementesTemporarias)
         {
             semente.coletada = false;
+            sementesColetadas--;
         }
 
         dragShot.sementesTemporarias.Clear();
