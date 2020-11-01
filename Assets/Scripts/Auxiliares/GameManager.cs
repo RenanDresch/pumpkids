@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     {
         if(dragShot.atirou)
         {
-            if(dragShot.tempoDoTiro >= 5)
+            if(dragShot.tempoDoTiro >= dragShot.tempoMaximoDoTiro)
             {
                 Errou();
             }
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
         else if (!dragShot.podeAtirar)
         {
-            Debug.Log("Voltando");
+            dragShot.colisor.enabled = false;
             VoltarAoCheckPoint();
         }
     }
@@ -57,8 +57,14 @@ public class GameManager : MonoBehaviour
         if (Vector3.Distance(dragShot.jack.position, posicaoAlvo) < 0.01f)
         {
             dragShot.podeAtirar = true;
-            if(checkPoint)
+            dragShot.colisor.enabled = true;
+            if (checkPoint)
             {
+                var auraAlvo = checkPoint.GetComponent<AuraAlvo>();
+                if(auraAlvo)
+                {
+                    auraAlvo.possuido = true;
+                }
                 dragShot.alvo = checkPoint;
                 efeitos.Possuir();
             }
@@ -67,6 +73,14 @@ public class GameManager : MonoBehaviour
 
     private void Errou()
     {
+        foreach(var semente in dragShot.sementesTemporarias)
+        {
+            semente.coletada = false;
+        }
+
+        dragShot.sementesTemporarias.Clear();
+
+        dragShot.tempoDoTiro = 0;
         dragShot.atirou = false;
 
         dragShot.jack.velocity = Vector3.zero;

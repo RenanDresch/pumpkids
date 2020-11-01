@@ -2,16 +2,17 @@
 
 public class AuraAlvo : MonoBehaviour
 {
-    private SkinnedMeshRenderer[] renderers;
+    public Transform raiz;
+    private Renderer[] renderers;
 
     public bool possuido;
-    public float velocidadeEfeito = 3;
+    private float velocidadeEfeito = 4.5f;
 
     private float fresnel = 0;
 
     private void Start()
     {
-        renderers = GetComponentsInChildren<SkinnedMeshRenderer>();
+        renderers = raiz.GetComponentsInChildren<Renderer>();
     }
 
     private void Update()
@@ -27,7 +28,7 @@ public class AuraAlvo : MonoBehaviour
         }
         else
         {
-            fresnel -= Time.deltaTime * velocidadeEfeito;
+            fresnel -= Time.deltaTime * velocidadeEfeito * 3;
         }
         fresnel = Mathf.Clamp(fresnel, 0, 3);
 
