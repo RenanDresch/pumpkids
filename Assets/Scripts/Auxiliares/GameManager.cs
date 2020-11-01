@@ -71,6 +71,13 @@ public class GameManager : MonoBehaviour
 
     private void Errou()
     {
+        foreach(var semente in dragShot.sementesTemporarias)
+        {
+            semente.coletada = false;
+        }
+
+        dragShot.sementesTemporarias.Clear();
+
         dragShot.tempoDoTiro = 0;
         dragShot.atirou = false;
 

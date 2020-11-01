@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class DragShot : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class DragShot : MonoBehaviour
 
     public float tempoMaximoDoTiro;
     public float tempoDoTiro;
+
+    public List<ColisorSemente> sementesTemporarias;
 
     private void Start()
     {
@@ -81,15 +84,19 @@ public class DragShot : MonoBehaviour
                 {
                     auraAlvo.possuido = true;
                 }
+                sementesTemporarias.Clear();
             }
-            else
+            var colisorParede = other.GetComponent<ColisorParede>();
+            if (colisorParede)
             {
-                var colisorParede = other.GetComponent<ColisorParede>();
-                if(colisorParede)
-                {
-                    jack.velocity = Vector3.zero;
-                    jack.Sleep();
-                }
+                jack.velocity = Vector3.zero;
+                jack.Sleep();
+            }
+            var colisorSemente = other.GetComponent<ColisorSemente>();
+            if (colisorSemente)
+            {
+                sementesTemporarias.Add(colisorSemente);
+                colisorSemente.coletada = true;
             }
         }
     }
