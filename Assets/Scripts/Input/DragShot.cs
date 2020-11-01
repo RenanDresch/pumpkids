@@ -23,7 +23,13 @@ public class DragShot : MonoBehaviour
     public float tempoMaximoDoTiro;
     public float tempoDoTiro;
 
+    public GameObject prefabExplosao;
+
     public List<ColisorSemente> sementesTemporarias;
+
+    public AudioSource fonteDeSom;
+    public AudioSource fonteDeSomCarregamento;
+    public AudioClip disparo;
 
     private void Start()
     {
@@ -36,6 +42,8 @@ public class DragShot : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                fonteDeSomCarregamento.volume = 1;
+                fonteDeSomCarregamento.pitch = .2f;
                 posicaoInicial = Vector3.zero;
                 posicaoFinal = posicaoInicial;
                 mirando = true;
@@ -43,6 +51,7 @@ public class DragShot : MonoBehaviour
             }
             else if (mirando && Input.GetMouseButtonUp(0))
             {
+                fonteDeSomCarregamento.volume = 0;
                 mirando = false;
                 tempoDoTiro = 0;
                 posicaoFinal += new Vector2(Input.GetAxis("Mouse X") * 100, Input.GetAxis("Mouse Y") * 100);
@@ -51,12 +60,15 @@ public class DragShot : MonoBehaviour
                 podeAtirar = false;
                 atirou = true;
                 Cursor.visible = true;
+                fonteDeSom.pitch = 1.5f;
+                fonteDeSom.PlayOneShot(disparo);
             }
             if(mirando)
             {
                 posicaoFinal += new Vector2(Input.GetAxis("Mouse X") * 100, Input.GetAxis("Mouse Y") * 100);
                 direcao = posicaoInicial - posicaoFinal;
                 posicaoFinal = Vector3.ClampMagnitude(posicaoFinal, 1500);
+                fonteDeSomCarregamento.pitch = (posicaoFinal.magnitude / 1500) + 0.2f;
             }
         }
         else
@@ -108,6 +120,7 @@ public class DragShot : MonoBehaviour
             var colisorParede = other.GetComponent<ColisorParede>();
             if (colisorParede)
             {
+                Instantiate(prefabExplosao, transform.position, Quaternion.identity);
                 jack.velocity = Vector3.zero;
                 jack.Sleep();
             }
