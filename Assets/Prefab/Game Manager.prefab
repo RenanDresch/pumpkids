@@ -302,7 +302,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -800,7 +800,7 @@ MonoBehaviour:
   jack: {fileID: 6628034588390061011}
   alvo: {fileID: 0}
   colisor: {fileID: 6628034588390061012}
-  velocidadeTiro: 2
+  velocidadeTiro: 1
   posicaoInicial: {x: 0, y: 0}
   posicaoFinal: {x: 0, y: 0}
   direcao: {x: 0, y: 0}
