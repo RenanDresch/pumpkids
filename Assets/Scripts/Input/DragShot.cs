@@ -10,6 +10,8 @@ public class DragShot : MonoBehaviour
 
     public Collider colisor;
 
+    public float velocidadeTiro = 2;
+
     public Vector2 posicaoInicial;
     public Vector2 posicaoFinal;
     public Vector2 direcao;
@@ -67,7 +69,7 @@ public class DragShot : MonoBehaviour
     {
         var direcao = (posicaoInicial - posicaoFinal) * 0.05f;
 
-        var velocidade = new Vector3(direcao.x, 0, direcao.y) * 2;
+        var velocidade = new Vector3(direcao.x, 0, direcao.y) * velocidadeTiro;
 
         jack.AddForce(velocidade, ForceMode.Impulse);
 
