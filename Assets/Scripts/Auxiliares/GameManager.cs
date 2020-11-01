@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
 
         efeitos.MoverPara(posicaoAlvo);
 
-        if (Vector3.Distance(dragShot.jack.position, posicaoAlvo) < 0.01f)
+        if (Vector3.Distance(dragShot.jack.position, posicaoAlvo) < 0.05f)
         {
             dragShot.transform.position = posicaoAlvo;
             dragShot.podeAtirar = true;
