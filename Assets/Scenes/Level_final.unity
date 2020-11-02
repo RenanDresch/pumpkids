@@ -13425,6 +13425,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.979
       objectReference: {fileID: 0}
+    - target: {fileID: 4746150317679835157, guid: bf8169470400be844b8aeba244e4e152, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a6d833b3029c09c4693e3cc9bfcc1ac8, type: 3}
+    - target: {fileID: 4746150317679835157, guid: bf8169470400be844b8aeba244e4e152, type: 3}
+      propertyPath: BypassListenerEffects
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746150317679835157, guid: bf8169470400be844b8aeba244e4e152, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5708545810522501378, guid: bf8169470400be844b8aeba244e4e152, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6628034587455468361, guid: bf8169470400be844b8aeba244e4e152, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.19696495
