@@ -20,6 +20,7 @@ public class IniciarJogo : MonoBehaviour
 
     IEnumerator FaderCoroutine()
     {
+        Debug.Log("Fader");
         fader.blocksRaycasts = true;
         while(fader.alpha < 1)
         {

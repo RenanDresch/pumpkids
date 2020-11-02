@@ -2,10 +2,14 @@
 
 public class GameManager : MonoBehaviour
 {
+    private bool jogando = true;
     public DragShot dragShot;
     public EfeitosJack efeitos;
     public Transform checkPoint;
 
+    public CanvasGroup derrotaCG;
+
+    public int vidas = 5;
     public int sementesColetadas = 0;
 
     private Vector3 posicaoInicial;
@@ -17,27 +21,30 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(dragShot.atirou)
+        if (jogando)
         {
-            if(dragShot.tempoDoTiro >= dragShot.tempoMaximoDoTiro)
+            if (dragShot.atirou)
             {
-                Errou();
+                if (dragShot.tempoDoTiro >= dragShot.tempoMaximoDoTiro)
+                {
+                    Errou();
+                }
+                else if (dragShot.jack.IsSleeping()
+                    && dragShot.alvo == null)
+                {
+                    Errou();
+                }
+                else if (dragShot.jack.IsSleeping())
+                {
+                    checkPoint = dragShot.alvo;
+                    dragShot.atirou = false;
+                }
             }
-            else if (dragShot.jack.IsSleeping()
-                && dragShot.alvo == null)
+            else if (!dragShot.podeAtirar)
             {
-                Errou();
+                dragShot.colisor.enabled = false;
+                VoltarAoCheckPoint();
             }
-            else if (dragShot.jack.IsSleeping())
-            {
-                checkPoint = dragShot.alvo;
-                dragShot.atirou = false;
-            }
-        }
-        else if (!dragShot.podeAtirar)
-        {
-            dragShot.colisor.enabled = false;
-            VoltarAoCheckPoint();
         }
     }
 
@@ -64,7 +71,7 @@ public class GameManager : MonoBehaviour
             if (checkPoint)
             {
                 var auraAlvo = checkPoint.GetComponent<AuraAlvo>();
-                if(auraAlvo)
+                if (auraAlvo)
                 {
                     auraAlvo.Possuido = true;
                 }
@@ -76,18 +83,31 @@ public class GameManager : MonoBehaviour
 
     private void Errou()
     {
-        foreach(var semente in dragShot.sementesTemporarias)
+        vidas--;
+
+        if (vidas == 0)
         {
-            semente.coletada = false;
-            sementesColetadas--;
+            jogando = false;
+            derrotaCG.alpha = 1;
+            derrotaCG.blocksRaycasts = true;
+            dragShot.gameObject.SetActive(false);
+            return;
         }
+        else
+        {
+            foreach (var semente in dragShot.sementesTemporarias)
+            {
+                semente.coletada = false;
+                sementesColetadas--;
+            }
 
-        dragShot.sementesTemporarias.Clear();
+            dragShot.sementesTemporarias.Clear();
 
-        dragShot.tempoDoTiro = 0;
-        dragShot.atirou = false;
+            dragShot.tempoDoTiro = 0;
+            dragShot.atirou = false;
 
-        dragShot.jack.velocity = Vector3.zero;
-        dragShot.jack.Sleep();  
+            dragShot.jack.velocity = Vector3.zero;
+            dragShot.jack.Sleep();
+        }
     }
 }

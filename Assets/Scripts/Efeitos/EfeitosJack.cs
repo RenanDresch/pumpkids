@@ -57,7 +57,10 @@ public class EfeitosJack : MonoBehaviour
         {
             r.material.SetFloat("_Fresnel", 3 - dragShot.tempoDoTiro);
         }
-        escalaAlvo = (dragShot.tempoMaximoDoTiro - dragShot.tempoDoTiro) / dragShot.tempoMaximoDoTiro;
-        trail.startWidth = .2f * ((dragShot.tempoMaximoDoTiro - dragShot.tempoDoTiro) / 5);
+        if (dragShot.tempoDoTiro < 0.01f)
+        {
+            escalaAlvo = (dragShot.tempoMaximoDoTiro - dragShot.tempoDoTiro) / dragShot.tempoMaximoDoTiro;
+            trail.startWidth = .2f * ((dragShot.tempoMaximoDoTiro - dragShot.tempoDoTiro) / 5);
+        }
     }
 }
