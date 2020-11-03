@@ -133,6 +133,11 @@ public class DragShot : MonoBehaviour
                 sementesTemporarias.Add(colisorSemente);
                 colisorSemente.coletada = true;
             }
+            var colisorVitoria = other.GetComponent<ColisorVitoria>();
+            if (colisorVitoria)
+            {
+                gm.Venceu();
+            }
         }
     }
 }

@@ -39,7 +39,7 @@ public class Crianca : MonoBehaviour
 
     private void Update()
     {
-        if(tempo <= 0)
+        if(tempo <= 0 && pontos.Length > 1)
         {
             tempo = espera;
             ponto += avancando? 1 : -1;

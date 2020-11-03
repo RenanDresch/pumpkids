@@ -2,12 +2,17 @@
 
 public class GameManager : MonoBehaviour
 {
-    private bool jogando = true;
+    public bool jogando = true;
     public DragShot dragShot;
     public EfeitosJack efeitos;
     public Transform checkPoint;
 
+    public AudioSource musica;
+    public AudioClip clipeVitoria;
+    public AudioClip derrotaClipe;
+
     public CanvasGroup derrotaCG;
+    public CanvasGroup vitoriaCG;
 
     public int vidas = 5;
     public int sementesColetadas = 0;
@@ -87,6 +92,11 @@ public class GameManager : MonoBehaviour
 
         if (vidas == 0)
         {
+            musica.Stop();
+            musica.clip = derrotaClipe;
+            musica.loop = false;
+            musica.Play();
+
             jogando = false;
             derrotaCG.alpha = 1;
             derrotaCG.blocksRaycasts = true;
@@ -109,5 +119,17 @@ public class GameManager : MonoBehaviour
             dragShot.jack.velocity = Vector3.zero;
             dragShot.jack.Sleep();
         }
+    }
+
+    public void Venceu()
+    {
+        jogando = false;
+        musica.Stop();
+        musica.clip = clipeVitoria;
+        musica.loop = false;
+        musica.Play();
+        vitoriaCG.alpha = 1;
+        vitoriaCG.blocksRaycasts = true;
+        dragShot.gameObject.SetActive(false);
     }
 }

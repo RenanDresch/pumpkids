@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ContadorTempo : MonoBehaviour
 {
+    public GameManager gm;
     private float tempoInicial;
     public TMP_Text contador;
 
@@ -13,8 +14,11 @@ public class ContadorTempo : MonoBehaviour
 
     private void Update()
     {
-        var minutos = Mathf.FloorToInt((Time.timeSinceLevelLoad - tempoInicial)/60);
-        var segundos = (Time.timeSinceLevelLoad - tempoInicial) - (minutos * 60);
-        contador.text = $"{minutos:00}:{segundos:00}";
+        if (gm.jogando)
+        {
+            var minutos = Mathf.FloorToInt((Time.timeSinceLevelLoad - tempoInicial) / 60);
+            var segundos = (Time.timeSinceLevelLoad - tempoInicial) - (minutos * 60);
+            contador.text = $"{minutos:00}:{segundos:00}";
+        }
     }
 }
